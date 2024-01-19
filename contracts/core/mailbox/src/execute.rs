@@ -456,6 +456,8 @@ mod tests {
     #[case(vec![coin(100, "usd")], vec![coin(100, "usd")])]
     #[should_panic]
     #[case(vec![coin(100, "usd")], vec![coin(50, "usd")])]
+    #[should_panic]
+    #[case(vec![coin(100, "usdt")], vec![coin(100, "usd")])]
     #[case(vec![coin(50, "usd")], vec![coin(100, "usd")])]
     fn test_post_dispatch(#[case] required_hook_fees: Vec<Coin>, #[case] funds: Vec<Coin>) {
         let mut deps = mock_dependencies();
