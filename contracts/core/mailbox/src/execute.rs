@@ -276,7 +276,6 @@ mod tests {
             None => vec![],
         };
 
-        // TODO: is this mocked behavior correct?
         if !req.metadata.is_empty() {
             let parsed_fee = u32::from_be_bytes(req.metadata.as_slice().try_into().unwrap());
 
