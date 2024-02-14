@@ -1,21 +1,22 @@
 import { Client, IsmType } from "../src/config";
 import {
-  HplMailbox,
-  HplValidatorAnnounce,
   HplHookAggregate,
   HplHookMerkle,
   HplHookPausable,
   HplHookRouting,
   HplHookRoutingCustom,
   HplIgp,
+  HplIgpOracle,
   HplIsmAggregate,
   HplIsmMultisig,
+  HplIsmPausable,
   HplIsmRouting,
+  HplMailbox,
   HplTestMockHook,
   HplTestMockMsgReceiver,
+  HplValidatorAnnounce,
   HplWarpCw20,
   HplWarpNative,
-  HplIgpOracle,
 } from "./contracts";
 
 export type Contracts = {
@@ -39,6 +40,7 @@ export type Contracts = {
     aggregate: HplIsmAggregate;
     multisig: HplIsmMultisig;
     routing: HplIsmRouting;
+    pausable: HplIsmPausable;
   };
   mocks: {
     hook: HplTestMockHook;
@@ -76,47 +78,33 @@ export const deploy_ism = async (
           }))
         )
       );
-      await client.wasm.execute(
+      const setValidatorMessages = Object.entries(ism.validators).flatMap(([domain, set]) => ({
+        contractAddress: multisig_ism_res.address!,
+        msg: {
+          set_validators: {
+            domain: Number(domain),
+            threshold: set.threshold,
+            validators: set.addrs
+          }
+        }
+      }));
+      await client.wasm.executeMultiple(
         client.signer,
-        multisig_ism_res.address!,
-        {
-          enroll_validators: {
-            set: Object.entries(ism.validators).flatMap(([domain, validator]) =>
-              validator.addrs.map((v) => ({
-                domain: Number(domain),
-                validator: v,
-              }))
-            ),
-          },
-        },
-        "auto"
-      );
-
-      console.log("Set thresholds");
-      await client.wasm.execute(
-        client.signer,
-        multisig_ism_res.address!,
-        {
-          set_thresholds: {
-            set: Object.entries(ism.validators).map(
-              ([domain, { threshold }]) => ({
-                domain: Number(domain),
-                threshold,
-              })
-            ),
-          },
-        },
+        setValidatorMessages,
         "auto"
       );
 
       return multisig_ism_res.address!;
 
     case "aggregate":
+      let sub_modules = [];
+      for (const v of ism.isms) {
+        sub_modules.push(await deploy_ism(client, v, contracts));
+      }
       const aggregate_ism_res = await isms.aggregate.instantiate({
         owner: ism.owner === "<signer>" ? client.signer : ism.owner,
-        isms: await Promise.all(
-          ism.isms.map((v) => deploy_ism(client, v, contracts))
-        ),
+        isms: sub_modules,
+        threshold: ism.threshold,
       });
 
       return aggregate_ism_res.address!;
@@ -145,7 +133,16 @@ export const deploy_ism = async (
 
       return routing_ism_res.address!;
 
+    case "pausable":
+
+      const pausable_ism_res = await isms.pausable.instantiate({
+        owner: ism.owner === "<signer>" ? client.signer : ism.owner,
+        paused: ism.paused ?? false
+      });
+
+      return pausable_ism_res.address!;
+
     default:
-      throw new Error("invalid ism type");
+      throw new Error(`unsupported ism ${ism}`);
   }
 };

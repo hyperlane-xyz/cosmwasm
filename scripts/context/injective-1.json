@@ -1,0 +1,102 @@
+{
+  "contracts": {
+    "hpl_hook_aggregate": {
+      "codeId": 381,
+      "digest": "1d3c711db8ef6a536b94e72259361551343cee1645565f2ae88c9199fb1beef9"
+    },
+    "hpl_hook_fee": {
+      "codeId": 382,
+      "digest": "33b4e8ee59c4c5f6c95dde746d21666c7f81a49ce7391a5bd074a3104b703496"
+    },
+    "hpl_hook_merkle": {
+      "codeId": 383,
+      "digest": "c20c709a72769679ce1750927fe38107dfdbc5da2fa1c6da51bdf559aa5f652e"
+    },
+    "hpl_hook_pausable": {
+      "codeId": 384,
+      "digest": "454a4b99f7b3674c7fdc8e2c143bb2deb7fb66c9f94de98b893b56cd4fe2a0e7"
+    },
+    "hpl_hook_routing": {
+      "codeId": 385,
+      "digest": "d5cc55f7287d5ee0e59cf236e6211c8a68bd54bd773f4ee03ffb67df288b57ba"
+    },
+    "hpl_hook_routing_custom": {
+      "codeId": 386,
+      "digest": "55e9c6e12965617fd5dd19cac6c1d460009daeec66cc32a64ea8fe3432d7c854"
+    },
+    "hpl_hook_routing_fallback": {
+      "codeId": 387,
+      "digest": "89108d56675015c03cd266bd55bde577b57cfc946d1cea02f4d79dc31d037da5"
+    },
+    "hpl_igp": {
+      "address": "inj1y7h9y2vwtdfmxjm6ur9x8czcghp3u86e2wtcxr",
+      "codeId": 388,
+      "digest": "9fe334789058e7e236dc4bbea1c3becaa85b884ad762012b1a4753d7159e4c80"
+    },
+    "hpl_igp_oracle": {
+      "address": "inj1qkmy09d749jdl7p88slrxgzdfnt7u4wnfk7gxk",
+      "codeId": 389,
+      "digest": "e3b595296ce0638668bfe0e08dcfcf9717f0955c063d45f15c393dfedd0a309c"
+    },
+    "hpl_ism_aggregate": {
+      "codeId": 390,
+      "digest": "b425d0b79c1a51bf4c3e49adb00b389ca8fcccac12b355289c5f6daf27959a18"
+    },
+    "hpl_ism_multisig": {
+      "codeId": 391,
+      "digest": "ce34a65d380eb4ddb0e47a5e859c740f2f34675a026d8d123eaf548230e704a4"
+    },
+    "hpl_ism_pausable": {
+      "codeId": 392,
+      "digest": "8e5b96cd62378563267be930edb8c3dd9494ec13c6de7909172cdf0fe4edd4b2"
+    },
+    "hpl_ism_routing": {
+      "codeId": 393,
+      "digest": "8453cbfbaa0c68d0980689c734ff1f13c221e5a6e5c1938dea7645d1926a5e6e"
+    },
+    "hpl_mailbox": {
+      "address": "inj1palm2wtp6urg0c6j4f2ukv5u5ahdcrqek0sapt",
+      "codeId": 394,
+      "digest": "f21ec28636172a8d52602145b00f4cb56ba9d001dd6d4cbe6d5e38ace04ea3f3"
+    },
+    "hpl_test_mock_hook": {
+      "codeId": 395,
+      "digest": "b35975f8d3741d6fff93e262c2bd11ac582464c2adfc7ba95999952349a36395"
+    },
+    "hpl_test_mock_ism": {
+      "codeId": 396,
+      "digest": "b99645eab7b564218d184aaf8f840d5944c7bc6c4a55cef6aa36bbff0c44e078"
+    },
+    "hpl_test_mock_msg_receiver": {
+      "address": "inj1sy7sz0ek0353qym2q92l306m3h4tty24t5l9dt",
+      "codeId": 397,
+      "digest": "b073c3253a17ab2709e9eabc7c7010832632832ec24bdc6f4ff5ca87fcd26cba"
+    },
+    "hpl_validator_announce": {
+      "address": "inj1r7eztvhul0n4uc22r438m6tl7dezgthdw2cjjx",
+      "codeId": 398,
+      "digest": "768b0192d7b307dd6dbd26b8285f33b92530150186171d25b1831fe2fa16ce8a"
+    },
+    "hpl_warp_cw20": {
+      "codeId": 399,
+      "digest": "656725112ce2574d29ddcc7221a07c82de0bf3da5dc9ca22f70c256bdaa266e2"
+    },
+    "hpl_warp_native": {
+      "codeId": 400,
+      "digest": "1dc6d8e868dc606c04d2fcb075c8aa68c45416565ebefa60a5252362adcc05c4"
+    },
+    "hpl_default_ism": {
+      "codeId": 390,
+      "digest": "b425d0b79c1a51bf4c3e49adb00b389ca8fcccac12b355289c5f6daf27959a18",
+      "address": "inj1jkvdheut9sdzz492wagp2n3cxh9537w3v4786a"
+    },
+    "hpl_default_hook": {
+      "address": "inj1y7h9y2vwtdfmxjm6ur9x8czcghp3u86e2wtcxr"
+    },
+    "hpl_required_hook": {
+      "codeId": 383,
+      "digest": "c20c709a72769679ce1750927fe38107dfdbc5da2fa1c6da51bdf559aa5f652e",
+      "address": "inj1269dxcuyglc8mmecf95lf63elt3cq2tz57ka6h"
+    }
+  }
+}
